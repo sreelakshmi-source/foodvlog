@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+
+         <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>manko </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'Home/css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
+      <style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: black;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+</style>
+       <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+     <title>Bootstrap Example</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'Home/css/responsive.css' %}">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'Home/css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/Home/cssfont-awesome.css">
+      <!-- owl stylesheets -->
+      <link rel="stylesheet" href="{% static 'Home/css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'Home/css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- header -->
+      <header class="section">
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                   <div class="col-md-6">
+                  <div class="categories">
+                     <div class="dropdown">
+                     <button class="dropbtn">Apply Filter</button>
+                     <div class="dropdown-content">
+                        <a href="/">All</a>
+                        {% for i in categs %}
+                        <a href={{i.get_url}}>{{i.name}}</a>
+                        {% endfor %}
+                     </div>
+                     </div>
+                     </div>
+                  </div>
+
+                   <div class="nav navbar-nav navbar-right">
+                    <ul class="clear">
+                        {% if user.is_authenticated %}
+                        <li  style="color:white; text-indent:450px;">Hello,{{user.first_name}} </li>
+                      <div class="col-md-3">
+                         <li><a class="active"  style="color:white;" href="/" >  Home </a> </li>
+                      </div>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                          <li><a  style="color:white;" href="{% url 'cartdet' %}" ><span class="glyphicon glyphicon-shopping-cart"> {{itc}} </span> </a> </li>
+                      </div>
+                      <div class="col-md-3">
+                         <li><a class="active" style="color:white;" href="reglog/logout" > <span class="glyphicon glyphicon-off">  logout</span> </a> </li>
+                      </div>
+                     {% else %}
+                      <div class="col-md-3">
+                          <li><a class="active" style="color:white;" href="reglog/register" ><span class="glyphicon glyphicon-user">Signup </span></a> </li>
+                      </div>
+                      <div class="col-md-3">
+                          <li><a class="active" style="color:white;" href="reglog/login" > <span class="glyphicon glyphicon-log-in"></span> Login  </a> </li>
+                      </div>
+                     {% endif %}
+                        <div class="col-md-3">
+
+                           <form class="navbar-form navbar-left" action="{% url 'search' %}">
+                               <input style="text-align: center; "  type="text" placeholder="Search" name="q">
+                           </form>
+                        </div>
+                  </div>
+                  </ul>
+                  </nav>
+               </div>
+               </div>
+            </div>
+         </div>
+         <!-- end header inner -->
+      </header>
+      <!-- end header -->
+      <section >
+         <div id="main_slider" class="section carousel slide banner-main" data-ride="carousel">
+            <ol class="carousel-indicators">
+               <li data-target="#main_slider" data-slide-to="0" class="active"></li>
+               <li data-target="#main_slider" data-slide-to="1"></li>
+               <li data-target="#main_slider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="row marginii">
+                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <div class="carousel-caption ">
+                              <h1>man<strong class="color"><i>K</i>o</strong></h1>
+                              <p> Food with Taste and Quality...No matter Where you are...!!!</p>
+                           </div>
+                         </div>
+                         <!----1--->
+                        <div col-md-6>
+                         <div class="container">
+                              <img src="{% static 'Home/images/bg9.jpg' %}"  alt="img"class="rounded-circle"height="500" width="500" >
+                         </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="row marginii">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <div class="carousel-caption ">
+                               <h1>man<strong class="color"><i>K</i>o</strong></h1>
+                              <p>Food with Taste and Quality...No matter Where you are...!!!</p>
+
+                           </div>
+                        </div>
+                         <!--2---->
+                        <div class="col-md-6">
+                           <div class="container">
+                               <figure><img src="{% static 'Home/images/bg1.jpg' %}" class="rounded-circle" alt="img"></figure>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="row marginii">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                           <div class="carousel-caption ">
+                              <h1>Welcome to <strong class="color">Our Shop</strong></h1>
+                              <p>Food with Taste and Quality...No matter Where you are...!!!</p>
+                           </div>
+                        </div>
+                         <!---3 img---->
+                           <div class="container">
+                             <img src="{% static 'Home/images/bg12.jpg' %}"  alt="" class="rounded-circle" width="500" height="450">
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+            <i class='fa fa-angle-left'> < </i></a>
+            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+            <i class='fa fa-angle-right'> > </i>
+            </a>
+         </div>
+      </section>
+      <!-- plant -->
+      <div id="plant" class="section  product">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 ">
+                  <div class="titlepage">
+                     <center><h2><strong class="black"> Our</strong>  Products</h2></center>
+                     <span>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected randomised words which don't look even slightly believable</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--gallery-->
+      <div class="clothes_main section ">
+          <div class="container">
+            <div class="row">
+               {% for i in pg.object_list %}
+               <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                  <div class="sport_product">
+                     <figure> <a href="{{i.get_url}}"><img src="{{i.img.url}}" alt="" style="height=300px; width=300px"></a></figure>
+                     <h4> <strong class="price_text">{{i.name}}</strong></h4>
+                     <h4>Rs. {{i.price}}</h4>
+                     <p>{{i.desc|truncatechars:17}}</p>
+                  </div>
+                </div>
+               {% endfor %}
+            </div>
+             <center class="active" style="color:white;">
+                {% for i in pg.paginator.page_range %}
+                <a href="?page={{i}}" class="btn btn-light btn-sm {% if pg.number == i %} active {% endif %}">{{i}}</a>
+                {% endfor %}
+             </center>
+            </div>
+          </div>
+      <!------>
+      <!-- contact us-->
+ <div id="plant" class="section  product">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 ">
+                  <div class="titlepage">
+                      <ol style="text-indent:105px;">
+                          <i class="glyphicon glyphicon-home"> Lorem Ipsum,available,India  </i>
+                          <i class="glyphicon glyphicon-phone">  5326457489</i>
+                          <i class="glyphicon glyphicon-globe">    www.manko.com</i>
+                      </ol>
+                  </div>
+            </div>
+         </div>
+      </div>
+ </div>
+<!-- end Contact Us-->
+   </body>
+</html>

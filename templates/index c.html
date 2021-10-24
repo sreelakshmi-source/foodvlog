@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="{% static 'cart/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow" />
+  </head>
+<body>
+
+<h3> your shoping bag </h3>
+
+        {% for i in ci %}
+<div class="shopping-cart">
+    <!-- Product #1 -->
+    <div class="item">
+        <div class="buttons">
+            <a href="{% url 'removecart' i.prod_seltd.id %}"><span><i class="fa fa-trash"></i></span></a>
+        </div>
+        <div class="image">
+          <a href="{{i.prod_seltd.get_url}}"><img src="{{i.prod_seltd.img.url}}" alt="{{i.prod_seltd.name}}" style="width:100px; height:100px;" /></a></div>
+        <div class="description">
+            <span>Name: {{i.prod_seltd.name}}</span>
+            <span>ID: {{ i.prod_seltd.id }}</span>
+            <span>stock: {{i.prod_seltd.stock}}</span>
+            <span style="font-size:14px;color:#43484D;">Price: {{i.prod_seltd.price}}*1</span>
+        </div>
+        <div class="quantity">
+          <button class="plus-btn" type="button" name="button">
+            <a href="{% url 'addcart' i.prod_seltd.id %}"><img src="{% static 'cart/images/plus.svg' %}" alt="" ` /></a>
+          </button>
+          <span style="font-size:14px;color:#43484D;">{{i.qty}}</span>
+          <button class="minus-btn" type="button" name="button">
+            <a href="{% url 'deccart' i.prod_seltd.id %}"><img src="{% static 'cart/images/minus.svg' %}" alt="" /></a>
+          </button>
+        </div>
+        <div class="total-price">Rs. {{i.total}}</div>
+      </div>
+    {% endfor %}
+    <span style="text-align:right; color:red;padding-right: 70px;font-family: cursive,Fantasy;font-size: 80 px"><b>Total:Rs.{{t}}</b></span>
+    <!-- Product #2 -->
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+   <head>
+
+         <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>manko </title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{% static 'Home/css/bootstrap.min.css' %}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{% static 'Home/css/style.css' %}">
+
+       <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+     <title>Bootstrap Example</title>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{% static 'Home/css/responsive.css' %}">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{% static 'Home/css/jquery.mCustomScrollbar.min.css' %}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/Home/cssfont-awesome.css">
+      <!-- owl stylesheets -->
+      <link rel="stylesheet" href="{% static 'Home/css/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'Home/css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- header -->
+      <header class="section">
+         <!-- header inner -->
+          <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                   <div class="nav navbar-nav navbar-right">
+                    <ul class="clear">
+                      <div class="col-md-3">
+                         <li><a class="active"  style="color:white;" href="/" >  Home    </a> </li>
+                      </div>
+                     {% if user.authenticated %}
+                     <li> Hello,{{user.first_name}}</li>
+
+                         <div class="row">
+                      <div class="col-md-3">
+                     <li><a  style="color:white;" href="{% url 'cartdet' %}" > cart {{itc}}  </a> </li>
+                      </div>
+                     <div class="col-md-3">
+                     <li><a class="active" style="color:white;" href="reglog/logout" >  logout  </a> </li>
+                     </div>
+                     {% else %}
+                      <div class="col-md-3">
+                          <li><a class="active" style="color:white;" href="reglog/register" ><span class="glyphicon glyphicon-user">Signup </span></a> </li>
+                      </div>
+                      <div class="col-md-3">
+                          <li><a class="active" style="color:white;" href="reglog/login" > <span class="glyphicon glyphicon-log-in"></span> Login  </a> </li>
+                      </div>
+                     {% endif %}
+                            <div class="col-md-3">
+                                <form class="navbar-form navbar-left" action="{% url 'search' %}">
+                                <input style="text-align: center; " type="text" placeholder="Search" name="q">
+                                </form>
+                            </div></div>
+                  </ul>
+                  </nav>
+               </div>
+               </div>
+            </div>
+         </div>
+      </header>>   <!-- end header inner -->
+      <!-- end header inner -->
+      {% block content %}
+      {% endblock %}
+   </body>
+</html>
